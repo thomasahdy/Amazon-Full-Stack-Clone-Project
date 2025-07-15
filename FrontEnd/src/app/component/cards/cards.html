@@ -1,0 +1,27 @@
+<div class="container my-5">
+  <h5>Related to items you've viewed</h5>
+  <div class="row flex-nowrap overflow-auto pb-3">
+    <div class="col-6 col-md-3" *ngFor="let item of relatedItems" style="min-width: 220px;">
+      <div class="card h-100">
+        <img [src]="item.image" class="card-img-top" [alt]="item.title">
+        <div class="card-body p-2">
+          <h6 class="card-title">{{ item.title }}</h6>
+          <p class="card-text text-warning">{{ item.price }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h5 class="mt-4">Customers who viewed items in your browsing history also viewed</h5>
+  <div class="row flex-nowrap overflow-auto pb-3">
+    <div class="col-6 col-md-2" *ngFor="let item of alsoViewed" style="min-width: 180px;">
+      <div class="card h-100">
+        <img [src]="item.image" class="card-img-top" [alt]="item.title">
+        <div class="card-body p-2">
+          <h6 class="card-title">{{ item.title }}</h6>
+          <p class="card-text text-warning">{{ item.price }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
