@@ -1,0 +1,7 @@
+table {
+  background: #fff;
+  border-radius: 8px;
+}
+th, td {
+  vertical-align: middle;
+} 

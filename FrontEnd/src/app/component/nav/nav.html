@@ -8,7 +8,9 @@
     <button class="btn btn-warning" type="submit"><i class="bi bi-search"></i></button>
   </form>
   <span class="text-white me-3">EN</span>
-  <span class="text-white me-3">Hello, sign in<br>Account & Lists</span>
-  <span class="text-white me-3">Returns<br>& Orders</span>
-  <a href="#" class="text-white"><i class="bi bi-cart"></i> Cart</a>
+  <a [routerLink]="['/login']" class="text-white me-3">Sign In</a>
+  <a [routerLink]="['/register']" class="text-white me-3">Register</a>
+  <a [routerLink]="['/orders']" class="text-white me-3">Orders</a>
+  <a [routerLink]="['/cart']" class="text-white me-3"><i class="bi bi-cart"></i> Cart</a>
+  <a *ngIf="isAdmin" [routerLink]="['/admin']" class="text-white">Admin</a>
 </nav>

@@ -1,0 +1,16 @@
+<div class="container py-4">
+  <h2>Your Wishlist</h2>
+  <div *ngIf="wishlist.products.length === 0" class="alert alert-info">Your wishlist is empty.</div>
+  <div class="row" *ngIf="wishlist.products.length > 0">
+    <div class="col-6 col-md-3 mb-4" *ngFor="let product of wishlist.products">
+      <div class="card h-100 shadow-sm">
+        <img [src]="product.img_link" class="card-img-top" [alt]="product.product_name" style="height:180px;object-fit:contain;">
+        <div class="card-body p-2">
+          <h6 class="card-title">{{ product.product_name }}</h6>
+          <p class="card-text text-warning fw-bold mb-1">₹{{ product.discounted_price }}</p>
+          <button class="btn btn-sm btn-danger w-100">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 

@@ -1,0 +1,17 @@
+
+<div class="container py-4" *ngIf="product">
+  <div class="row">
+    <div class="col-md-5">
+      <img [src]="product.img_link" class="img-fluid border rounded" [alt]="product.product_name" style="max-height:350px;object-fit:contain;">
+    </div>
+    <div class="col-md-7">
+      <h2>{{ product.product_name }}</h2>
+      <p class="text-warning fw-bold fs-4">₹{{ product.discounted_price }}</p>
+      <p class="text-muted"><del>₹{{ product.actual_price }}</del> <span class="text-success">{{ product.discount_percentage }}% off</span></p>
+      <p>Rating: {{ product.rating }} ({{ product.ratingCount }})</p>
+      <p>{{ product.about }}</p>
+      <button class="btn btn-warning me-2">Add to Cart</button>
+      <button class="btn btn-outline-secondary">Add to Wishlist</button>
+    </div>
+  </div>
+</div> 

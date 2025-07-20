@@ -1,0 +1,15 @@
+<div class="product-grid">
+  <div class="product-card" *ngFor="let product of products">
+    <img [src]="product.img_link" [alt]="product.product_name" class="product-image" />
+    <h3 [title]="product.product_name">{{ product.product_name | slice:0:40 }}<span *ngIf="product.product_name.length > 40">...</span></h3>
+    <p>Price: ₹{{ product.discounted_price }}</p>
+    <p *ngIf="product.discount_percentage > 0">
+      <span class="old-price">₹{{ product.actual_price }}</span>
+      <span class="discount">-{{ product.discount_percentage }}%</span>
+    </p>
+    <p>Rating: {{ product.rating }} ({{ product.ratingCount }} reviews)</p>
+    <a [routerLink]="['/product', product._id]" class="btn btn-primary" style="margin-top:8px;display:inline-block;">View Details</a>
+    <button class="btn btn-success" style="margin-top:8px;display:inline-block;margin-left:8px;">Add to Cart</button>
+  </div>
+</div>
+
