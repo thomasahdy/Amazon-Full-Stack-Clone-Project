@@ -1,5 +1,66 @@
 <div class="container py-5">
   <h2>Admin Dashboard</h2>
   <p>Welcome, Admin! Here you can manage products, orders, and users.</p>
-  <!-- Add admin controls here -->
+
+  <button class="btn btn-success mb-3" (click)="addProduct()">Add Product</button>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Discount</th>
+        <th>Category</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.product_name }}</td>
+        <td>₹{{ product.discounted_price }}</td>
+        <td>{{ product.discount_percentage }}%</td>
+        <td>{{ product.category.join(', ') }}</td>
+        <td>
+          <button class="btn btn-primary btn-sm me-2" (click)="editProduct(product)">Edit</button>
+          <button class="btn btn-danger btn-sm" (click)="deleteProduct(product)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div *ngIf="showForm" class="card p-3 mt-4">
+    <h4>{{ editMode ? 'Edit' : 'Add' }} Product</h4>
+    <form (ngSubmit)="saveProduct()">
+      <div class="mb-2">
+        <label>Name</label>
+        <input class="form-control" [(ngModel)]="selectedProduct.product_name" name="product_name" required />
+      </div>
+      <div class="mb-2">
+        <label>Price</label>
+        <input class="form-control" type="number" [(ngModel)]="selectedProduct.discounted_price" name="discounted_price" required />
+      </div>
+      <div class="mb-2">
+        <label>Actual Price</label>
+        <input class="form-control" type="number" [(ngModel)]="selectedProduct.actual_price" name="actual_price" required />
+      </div>
+      <div class="mb-2">
+        <label>Discount %</label>
+        <input class="form-control" type="number" [(ngModel)]="selectedProduct.discount_percentage" name="discount_percentage" />
+      </div>
+      <div class="mb-2">
+        <label>Category (comma separated)</label>
+        <input class="form-control" [(ngModel)]="selectedProduct.category" name="category" />
+      </div>
+      <div class="mb-2">
+        <label>Image URL</label>
+        <input class="form-control" [(ngModel)]="selectedProduct.img_link" name="img_link" />
+      </div>
+      <div class="mb-2">
+        <label>Description</label>
+        <textarea class="form-control" [(ngModel)]="selectedProduct.about" name="about"></textarea>
+      </div>
+      <button class="btn btn-success me-2" type="submit">Save</button>
+      <button class="btn btn-secondary" type="button" (click)="cancelForm()">Cancel</button>
+    </form>
+  </div>
 </div> 
